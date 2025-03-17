@@ -1,0 +1,18 @@
+<ion-header >
+  <ion-toolbar>
+    <div>
+      @if (showBackButton){
+        <ion-button (click)="goBack()" fill="empty" class="back-button">
+          <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+        </ion-button>
+      }
+      <ion-icon name="list-circle" size="large"></ion-icon>
+      <ion-title>ToDo-List</ion-title>
+      @if (showTrashButton){
+        <ion-button (click)="TrashTask()" fill="empty" class="remove">
+          <ion-icon name="trash" color="danger"></ion-icon>
+        </ion-button>
+      }
+    </div>
+  </ion-toolbar>
+</ion-header>

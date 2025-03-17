@@ -1,0 +1,13 @@
+ion-datetime {
+    --background: #392d3d;
+    border-radius: 16px;
+    box-shadow: rgba(var(--ion-color-rose-rgb), 0.3) 0px 10px 15px -3px;
+    justify-self: center;
+    width: 90vw;
+}
+.remove{
+    --background: transparent;
+}
+ion-label{
+    margin-left: 1.5rem;
+}

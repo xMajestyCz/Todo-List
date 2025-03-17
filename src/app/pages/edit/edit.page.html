@@ -1,0 +1,45 @@
+<app-header (trashClicked)="presentDeleteAlert()" [showTrashButton]="true"></app-header>
+
+<ion-content *ngIf="task">
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-input 
+        appAutoFocus
+        label="Title" 
+        label-placement="floating" 
+        [(ngModel)]="task.title" 
+        placeholder="Title">
+      </ion-input>
+
+    </ion-item>
+
+    <ion-item *ngFor="let desc of task.descriptions; let i = index; trackBy: trackByIndex" class="description">
+      <ion-checkbox
+        slot="start"
+        [(ngModel)]="task.descriptions[i].done"
+        (ionChange)="updateTaskDoneStatus()"
+        aria-label="Toggle description completion">
+      </ion-checkbox>
+      <ion-textarea 
+        appAutoFocus
+        class="description-input"
+        [(ngModel)]="task.descriptions[i].text" 
+        placeholder="New task description" 
+        [autoGrow]="true">
+      </ion-textarea>
+
+      <ion-button (click)="removeDescription(i)" class="remove">
+        <ion-icon name="trash" color="danger"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  
+  <app-tasks-buttons 
+    [date]="task.date" 
+    [isEditMode]="true"
+    (dateChange)="task.date = $event"
+    (addDescriptionClicked)="addDescription()"
+    (saveClicked)="save()">
+  </app-tasks-buttons>
+</ion-content>
+

@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-input [(ngModel)]="newTask.title" label="Title" label-placement="floating" placeholder="Enter a title"></ion-input>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngFor="let description of newTask.descriptions; let i = index; trackBy: trackByIndex">
+    <ion-item>
+      <ion-input 
+        label="Description" 
+        [(ngModel)]="newTask.descriptions[i].text" 
+        label-placement="floating" 
+        placeholder="Enter a description">
+      </ion-input>
+      <ion-button (click)="removeDescription(i)" class="remove">
+        <ion-icon name="trash" color="danger"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+
+  <app-tasks-buttons 
+    [date]="newTask.date" 
+    (dateChange)="newTask.date = $event"
+    (addDescriptionClicked)="addDescription()"
+    (saveClicked)="save()">
+  </app-tasks-buttons>
+
+  @if (loading) {
+    <div style="text-align: center;">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+  }
+</ion-content>

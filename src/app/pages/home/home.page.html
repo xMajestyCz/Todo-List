@@ -1,0 +1,49 @@
+<app-header [showBackButton]="false"></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar [(ngModel)]="searchTask" (ionInput)="filterTask()" animated="true" placeholder="Search Task" clear-icon="trash-bin"></ion-searchbar>
+
+  @for (task of tasks; track $index) {
+    <ion-card>
+      <ion-card-header [routerLink]="['/edit', task.id]">
+        <ion-card-title>{{ task.title }}</ion-card-title>
+        <ion-card-subtitle>
+          <ul>
+            <li *ngFor="let desc of task.descriptions; trackBy: trackByIndex">
+              <ion-icon 
+                [name]="desc.done ? 'checkmark-circle' : 'close-circle'" 
+                [color]="desc.done ? 'success' : 'danger'">
+              </ion-icon>
+              <span [class.line-through]="desc.done">{{ desc.text | shorten:30 }}</span>
+            </li>            
+          </ul>          
+        </ion-card-subtitle>
+      </ion-card-header>
+      <div>
+        <div class="done-trash">
+          <ion-toggle aria-label="Enable Notifications" [(ngModel)]="task.done"
+          (ionChange)="toggleDone(task)"></ion-toggle>
+          <ion-button (click)="presentDeleteAlert(task)" class="remove">
+            <ion-icon name="trash" color="danger"></ion-icon>
+          </ion-button>          
+        </div>
+        <div class="date" *ngIf="task.date">
+          <ion-icon name="calendar-sharp" size="large"></ion-icon>
+          <ion-card-content>
+            {{ task.date | date: 'dd/MM/yy' }}
+          </ion-card-content>
+          <ion-icon name="alarm" size="large"></ion-icon>
+          <ion-card-content>
+            {{ task.date | date: 'HH:mm' }}
+          </ion-card-content>
+        </div>      
+      </div>
+    </ion-card>
+  }
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button [routerLink]="['/add']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

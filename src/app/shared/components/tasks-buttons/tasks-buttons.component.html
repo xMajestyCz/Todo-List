@@ -1,0 +1,28 @@
+<div style="margin: 20px;">
+  <ion-button (click)="triggerAddDescription()" expand="block" shape="round" color="primary">
+    Add a description
+  </ion-button>
+</div>
+
+<ion-label>The task should be ready by:</ion-label>
+
+<ion-datetime 
+  *ngIf="!isEditMode"
+  [(ngModel)]="date"
+  (ionChange)="onDateChange($event)"
+  max="2050">
+</ion-datetime>
+
+<ion-datetime 
+  *ngIf="isEditMode"
+  [(ngModel)]="date"
+  (ionChange)="onDateChange($event)"
+  presentation="date-time">
+</ion-datetime>
+
+
+<div style="margin: 20px;">
+  <ion-button expand="full" (click)="triggerSave()">
+    Save
+  </ion-button>
+</div>
