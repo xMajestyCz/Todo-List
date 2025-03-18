@@ -10,7 +10,6 @@
         [(ngModel)]="task.title" 
         placeholder="Title">
       </ion-input>
-
     </ion-item>
 
     <ion-item *ngFor="let desc of task.descriptions; let i = index; trackBy: trackByIndex" class="description">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../core/models/task.models';
-import { FirestoreService } from '../../core/services/firestore.service';
+import { FirestoreService } from '../../task/services/task.service';
 import { ToastController } from '@ionic/angular';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Task } from '../../core/models/task.models';
-import { FirestoreService } from '../../core/services/firestore.service';
+import { FirestoreService } from '../../task/services/task.service';
 import { AlertService } from '../../shared/services/alert.service';
 
 @Component({

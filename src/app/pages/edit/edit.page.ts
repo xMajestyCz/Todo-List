@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task, TaskDescription } from '../../core/models/task.models';
-import { FirestoreService } from '../../core/services/firestore.service';
+import { FirestoreService } from '../../task/services/task.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from '../../shared/services/toast.service';
 import { AlertService } from '../../shared/services/alert.service';

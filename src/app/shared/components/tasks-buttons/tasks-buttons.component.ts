@@ -19,7 +19,7 @@ export class TasksButtonsComponent  implements OnInit {
   @Output() saveClicked = new EventEmitter<void>();
 
   onDateChange(event: any) {
-    const isoString = event.detail?.value;  // esto ya es un ISO string
+    const isoString = event.detail?.value;
   this.dateChange.emit(isoString);         
   }
 
